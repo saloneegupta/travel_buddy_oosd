@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class = "container">
+        <br>
+        <h1>Cabs</h1>
+        <br>
+        <div class="row mx-auto" style="width: 500px;">
+        {% if user.is_authenticated %}
+        <div class="ml-4 mb-4">
+                <a href="{% url 'new_cab' username=user.username %}" class="btn btn-primary">New Cab</a>
+        </div>
+        <div class="ml-4 mb-4">
+                <a href="{% url 'user_details' username=user.username %}" class="btn btn-primary">User Details</a>
+        </div>
+        <div class="ml-4 mb-4">
+                <a href="{% url 'cab_admin_panel' username=user.username %}" class="btn btn-primary">Admin Panel</a>
+        </div>
+        {% else %}
+        <div class="ml-4 mb-4">
+                <a href="{% url 'login' %}" class="btn btn-primary">New Cab</a>
+        </div>
+        <div class="ml-4 mb-4">
+                <a href="{% url 'login'%}" class="btn btn-primary">User Details</a>
+        </div>
+        <div class="ml-4 mb-4">
+                <a href="{% url 'login'%}" class="btn btn-primary">Admin Panel</a>
+        </div>
+        {% endif %}
+
+    </div>
+            <table class="table">
+                <thead class="thead-inverse">
+                <tr>
+                    <th>From</th>
+                    <th>To</th>
+                    <th>Date and Time</th>
+                    <th>Cab Admin</th>
+                    <th>Current Passengers</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for cabs in cabs %}
+                    <tr>
+                    <td> {{ cabs.source }} </td>
+                    <td> {{ cabs.destination }} </td>
+                    <td class="align-middle"> {{ cabs.dep_date_time }} </td>
+                    <td class="align-middle"> 
+                        {{ cabs.cab_admin}} </td>
+                    <td class="align-middle"> <a href="{% url 'cab_info' cabs.pk %}"><button class="btn btn-info">View Info</button></a></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>  
+{% endblock %}
+ 

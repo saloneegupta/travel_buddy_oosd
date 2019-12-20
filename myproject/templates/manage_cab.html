@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% block content %}
+<br>
+<div class="container">
+    <h1> Cab Info </h1>
+</div>
+<br>
+
+
+<div class="container">
+    <div class="ml-4 mb-4">
+    Source - <span class="font-weight-bold">{{ cab.source }}</span>
+    </div>
+    <div class="ml-4 mb-4">
+        Destination - <span class="font-weight-bold">{{ cab.destination }}</span>
+    </div>
+    <div class="ml-4 mb-4">
+        Date and Timing - <span class="font-weight-bold">{{ cab.dep_date_time }}</span>
+    </div>
+    <div class="ml-4 mb-4">
+        Cab size - <span class="font-weight-bold">{{ cab.size }}</span>
+    </div>
+    <div class="ml-4 mb-4">
+        Cab Admin - <span class="font-weight-bold">{{ cab.cab_admin }}</span>
+    </div>
+</div>
+
+
+<div class="container">
+    <br>
+    <h1 class="mb-4"> Passengers </h1>
+<table class="table">
+    <thead class="thead-inverse">
+    <tr>
+        <th>Username</th>
+        <th>Admin</th>
+        <th>Status</th>
+        <th>Approve</th>
+        <th>Decline</th>
+    </tr>
+    </thead>
+    <tbody>
+        {% for passenger in passengers %}
+            <tr>
+            <td class="align-middle"> {{ passenger.user }} </td>
+            <td class="align-middle"> {{ passenger.is_cab_admin }} </td>
+            <td class="align-middle"> {{ passenger.approval_status }} </td>
+            {% if passenger.is_cab_admin %}
+            <td class="align-middle"> - </td>
+            <td class="align-middle"> - </td>    
+            {% else %}
+            <td class="align-middle">
+                <a href="{% url 'approve_cab' pk_cab=cab.pk pk_user=passenger.user.username %}"> <button class="btn btn-success"> Approve </button> </a>
+            </td>
+            <td class="align-middle">
+                <a href="{% url 'decline_cab' pk_cab=cab.pk pk_user=passenger.user.username %}"> <button class="btn btn-danger"> Decline </button> </a>
+            </td>
+            {% endif %}
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+<br>
+
+
+<div class="row mx-auto" style="width: 300px;">
+    <div class="ml-4 mb-4">
+        <a href="{% url 'view_cabs' %}" class="btn btn-primary"> <-- Back</a>
+    </div>
+</div>
+
+{% endblock %}

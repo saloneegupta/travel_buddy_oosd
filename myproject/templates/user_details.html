@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block content %}
+<br>
+<div class="container">
+    <h1>Hello {{ User.username }} !</h1> 
+    <small class="text-muted d-block"> Please complete your user profile by entering the following details. </small>
+</div>
+<div class="container">
+    <br>
+<form method="post">
+  {% csrf_token %}
+  <!--div class="form-group">
+    <label for="id_user_details_id">User Name</label>
+    <input type="text" class="form-control" id="id_user_details_id" name="user_details_id">
+    </div-->
+
+  <div class="form-group">
+    <label for="id_first_name">First Name</label>
+    <input type="text" class="form-control" id="id_first_name" name="first_name">
+  </div>
+    <div class="form-group">
+        <label for="id_last_name">Last Name</label>
+        <input type="text" class="form-control" id="id_last_name" name="last_name">
+    </div>
+
+    <div class="form-group">
+        <label for="id_gender">Gender</label> <br>
+    <input type="radio" name="gender" value="m" class=""> Male
+        <input type="radio" name="gender" value="f" class=""> Female
+        <input type="radio" name="gender" value="o" class=""> Other
+    </div>
+
+    <div class="form-group">
+        <label for="id_dob">Date of birth</label>
+        <input type="text" class="form-control" id="id_dob" name="dob" value></textarea>
+    </div>
+
+
+    <div class="form-group">
+        <label for="id_contact_no">Contact Number</label>
+        <input type="text" class="form-control" id="id_contact_no" name="contact_no" value></textarea>
+    </div>
+
+    <div class="form-group">
+        <label for="id_contact_sharing">Share Contact</label> <br>
+        <input type="radio" name="contact_sharing" value="1" class=""> Yes
+        <input type="radio" name="contact_sharing" value="0" class=""> No
+    </div>
+    <br>
+    <button type="submit" class="btn btn-success">Update Details</button>
+</form>
+</div>
+{% endblock %}

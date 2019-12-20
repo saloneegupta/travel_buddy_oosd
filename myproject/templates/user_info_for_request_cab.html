@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<br>
+<div class="container">
+        <h4> Just 1 step away from requesting cab 😀 </h4>
+    <small class="text-muted d-block"> Please enter a valid username. </small>
+</div>
+<div class="container">
+    <br>
+<form method="post">
+  {% csrf_token %}
+  <div class="form-group">
+    <label for="id_username">Username</label>
+    <input type="text" class="form-control" id="id_username" name="username">
+    </div>
+
+    <br>
+    <button type="submit" class="btn btn-success">Submit</button>
+</form>
+</div>
+{% endblock %}

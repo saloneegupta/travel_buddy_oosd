@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block content %}
+<br>
+<div class="container">
+    <h1>Hello {{ User.username }} !</h1> 
+    <small class="text-muted d-block"> Please fill the following details. </small>
+</div>
+    <div class="container">
+    <br>
+<form method="post">
+    {% csrf_token %}
+    <div class="form-group">
+    <label for="id_source">Source</label>
+    <input type="text" class="form-control" id="id_source" name="source">
+    </div-->
+
+  <div class="form-group">
+    <label for="id_destination">Destination</label>
+    <input type="text" class="form-control" id="id_destination" name="destination">
+  </div>
+    <div class="form-group">
+        <label for="id_dep_date">Departure date</label>
+        <input type="date" class="form-control" id="id_dep_date" name="dep_date">
+    </div>
+    <div class="form-group">
+        <label for="id_dep_time">Departure time</label>
+        <input type="time" class="form-control" id="id_dep_time" name="dep_time" />
+    </div>
+
+    <div class="form-group">
+            <label for="id_size">Cab Size</label> <br>
+            <select class="form-control" id="id_size" name="size">
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+        </select>
+    </div>
+    <br>
+    <button type="submit" class="btn btn-success">Post New Cab</button>
+</form>
+</div>
+{% endblock %}

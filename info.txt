@@ -1,0 +1,11 @@
+
+# Add passenger_details:
+user_details = User_details(first_name='Akshay',last_name='Gugale',gender='m',dob='1998/05/25',contact_no=9420645590,contact_sharing=1,user='aki')
+
+
+# ADMIN credentials
+User --> aki
+Password --> hello
+
+# Change password of a user
+https://dustindavis.me/how-to-reset-a-django-admin-password/
